@@ -8,7 +8,7 @@ const Blog = require('../models/Blog');
 router.get('/', async (req, res) => {
     try{
         const showBlogs = await Blog.find();
-        res.json(showBlogs)
+        res.status(200).json(showBlogs)
     } catch (err) {
         res.json({ message:err });
     }
@@ -23,7 +23,7 @@ router.post('/', async (req,res) => {
 
     try{
         const savedBlog = await blog.save();
-            res.json(savedBlog);
+            res.status(201).json(savedBlog);
     } catch(err){
         res.json({ message: err });
     }
@@ -33,7 +33,7 @@ router.post('/', async (req,res) => {
 router.get('/:id', async (req,res) => {
     try{
         const specBlog = await Blog.findById(req.params.id);
-        res.json(specBlog);
+        res.status(200).json(specBlog);
     } catch (err) {
         res.json({ message:err });
     }
@@ -43,7 +43,7 @@ router.get('/:id', async (req,res) => {
 router.delete('/:id', async (req,res) => {
     try{
         const removedBlog = await Blog.deleteOne({ _id:req.params.id });
-        res.json(removedBlog);
+        res.status(200).json(removedBlog);
     } catch (err) {
         res.json({ message: err });
     }
@@ -59,7 +59,7 @@ router.patch('/:id', async (req,res) => {
                       status: req.body.status
             } }
         );
-        res.json(updatedBlog);
+        res.status(200).json(updatedBlog);
     } catch(err) {
         res.json({ message: err });
     }
