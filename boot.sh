@@ -32,7 +32,6 @@ docker container run \
     blog-api;
 printf "api container started --->\n"
 
-cd ..
 printf "\n"
 
 printf "all containers are up and running"
